@@ -57,13 +57,15 @@ export default function Root() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Text
-	    as={'b'}
-	    color={'tomato'}
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}>
-            NotesR.US
-          </Text>
+          <Link href="/">
+            <Text
+              as={'b'}
+              color={'tomato'}
+              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+              fontFamily={'heading'}>
+              NotesR.US
+            </Text>
+          </Link>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
@@ -76,7 +78,7 @@ export default function Root() {
           direction={'row'}
           spacing={6}>
           <Link py={2} href={'https://github.com/erniewang/notesr.us'}>
-	    <MarkGithubIcon size={16} />
+            <MarkGithubIcon size={16} />
           </Link>
         </Stack>
       </Flex>
@@ -84,12 +86,12 @@ export default function Root() {
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
-      <VStack h='calc(100vh - 100px)'>
+      <VStack h='calc(100vh - 100px)' w='100%'>
         <Center>
           <Outlet />
         </Center>
       </VStack>
-      <Footer />
+      { /* <Footer /> */}
     </Box>
   );
 }
@@ -256,7 +258,7 @@ const NAV_ITEMS = [
   },
   {
     label: 'Notes Editor',
-    href: '/home',
+    href: '/editor',
   },
   {
     label: 'Chord Generator',

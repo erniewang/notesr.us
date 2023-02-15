@@ -1,21 +1,69 @@
-import { useEffect } from 'react';
-import abcjs from 'abcjs';
+import {
+  Box,
+  Container,
+  Heading,
+  SimpleGrid,
+  Icon,
+  Text,
+  Stack,
+  HStack,
+  VStack,
+} from '@chakra-ui/react';
+import { CheckIcon } from '@chakra-ui/icons';
+
+
+const features = [
+  {
+    title: 'Note Display (MusicXML)',
+    text: 'Upload your MusicXML file, display notes and play your music in the browser.',
+  },
+  {
+    title: 'Note Display (ABC)',
+    text: 'Paste a text of ABC notation, display your music notes and play music.',
+  },
+  {
+    title: 'Note Editor',
+    text: 'Edit your music score, play it and download it.',
+  },
+  {
+    title: 'Chord Generator',
+    text: 'Generate all kinds of chords.',
+  },
+  {
+    title: 'Note Listener',
+    text: 'Play, sing; NoteListener will put your music into notes and let you download your score.',
+  },
+  {
+    title: 'Ear Trainer',
+    text: 'Develop your music intuition',
+  },
+];
 
 export const Home = () => {
-	  const tune = 'X:1\nT: Cooley\'s\nM: 4/4\nL: 1/8\nR: reel\nK: Emin\nD2|:"Em"EB{c}BA B2 EB|~B2 AB dBAG|"D"FDAD BDAD|FDAD dAFD|\n"Em"EBBA B2 EB|B2 AB defg|"D"afe^c dBAF|1"Em"DEFD E2 D2:|2"Em"DEFD E2 gf||\n|:"Em"eB B2 efge|eB B2 gedB|"D"A2 FA DAFA|A2 FA defg|\n"Em"eB B2 eBgB|eB B2 defg|"D"afe^c dBAF|1"Em"DEFD E2 gf:|2"Em"DEFD E4|]\n';
-	  useEffect( () => {
-		      abcjs.renderAbc('paper', tune, {});
-		    }, []);
-	  return (
-		      <>
-		        <div class="hello">
-		                  <h1>Vue Basic abcjs Demo</h1>
-		                  <p>This is a simple app that just displays some sheet music.</p>
-		                  <p>The only addition to the standard vue-cli app's dependencies is:</p>
-		                  <pre>npm install abcjs --save</pre>
-		                  <p>The only necessary code to make this work is:</p>
-		                  <div id="paper" />
-		            </div>
-		      </>
-		    );
-}
+  return (
+    <Box p={4}>
+      <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
+        <Heading fontSize={'3xl'}>NotesR.US is a toolbox for musicians</Heading>
+        <Text color={'gray.600'} fontSize={'xl'}>
+          Select one from top menu.
+        </Text>
+      </Stack>
+
+      <Container maxW={'6xl'} mt={10}>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={10}>
+          {features.map((feature, idx) => (
+            <HStack key={idx} align={'top'}>
+              <Box color={'green.400'} px={2}>
+                <Icon as={CheckIcon} />
+              </Box>
+              <VStack align={'start'}>
+                <Text fontWeight={600}>{feature.title}</Text>
+                <Text color={'gray.600'}>{feature.text}</Text>
+              </VStack>
+            </HStack>
+          ))}
+        </SimpleGrid>
+      </Container>
+    </Box>
+  );
+};

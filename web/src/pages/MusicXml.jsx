@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { FileUpload } from '../components/FileUpload.jsx';
-import OsmDisplay from '../components/OsmDisplay.jsx';
+import { FileUpload } from '../components/FileUpload';
+//import OsmDisplay from '../components/OsmDisplay.jsx';
+//import Score from '../components/Score.jsx';
+import { OsmdScore } from '../components/OsmdScore';
 
 function MusicXml() {
   const [file, setFile] = useState("");
@@ -8,7 +10,9 @@ function MusicXml() {
 
   useEffect( () => {
     //setFile("/api/files/Nanomimes.musicxml");
-    setFile('https://notesr.us/api/files/Nanomimes.musicxml');
+    //setFile("/api/files/score.xml");
+    //setFile('https://notesr.us/api/files/Nanomimes.musicxml');
+    setFile('https://notesr.us/api/files/MuzioClementi_SonatinaOpus36No1_Part1.musicxml');
   }, []);
   return (
     <>
@@ -16,7 +20,7 @@ function MusicXml() {
           <FileUpload
 	    msg="Drag MusciXML file here"
 	  />
-	  <OsmDisplay file={file} />
+	  <OsmdScore file={file} />
       </div>
     </>
   )

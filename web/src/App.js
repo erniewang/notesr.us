@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from './routes/root';
 import { Home } from './pages/Home';
+import { NoteEditor } from './pages/NoteEditor';
 import ErrorPage from './pages/ErrorPage';
 import ChordGenerator from './pages/ChordGenerator';
 import { Pitch2Notes } from './pages/Pitch2Notes';
@@ -14,8 +15,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/home",
+        index: true,
         element: <Home />,
+      },
+      {
+        path: "/editor",
+        element: <NoteEditor />,
       },
       {
         path: "/chordgen",
