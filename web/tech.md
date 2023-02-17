@@ -16,8 +16,17 @@ ABC notation rendering and playing: [abcjs](https://github.com/paulrosen/abcjs)
 
 MusciXML rendering: [OpenSheetMusicDisplay](https://opensheetmusicdisplay.org/)
 
+Web audio framework: [Tone.js](https://tonejs.github.io/)
+
+Browser audio recording: [react-audio-recorder](https://github.com/samhirtarif/react-audio-recorder)
+
+
 ## Learning Resources
 
 Drag-drop file upload: https://www.codemzy.com/blog/react-drag-drop-file-upload
+
+ABC notation: https://abcnotation.com/
+
+audio in general: https://wiki.thingsandstuff.org/Audio https://libreav.org/
 
 And of course: stackoverflow.com.
