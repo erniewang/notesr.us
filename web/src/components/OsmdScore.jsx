@@ -1,6 +1,7 @@
 import React, { createRef, useEffect } from 'react';
 import { OpenSheetMusicDisplay } from "opensheetmusicdisplay";
-import { Button, ButtonGroup, Center } from '@chakra-ui/react'
+import { Button, ButtonGroup, Center, Icon } from '@chakra-ui/react'
+import { FaPlay, FaPause, FaStop } from 'react-icons/fa';
 //import AudioPlayer from "../lib/osmd_audio_player";
 import AudioPlayer from "osmd-audio-player";
 
@@ -35,10 +36,10 @@ export const OsmdScore = ({file}) => {
   return (
     <div>
       <Center>
-        <ButtonGroup variant='outline' spacing='5'>
-          <Button colorScheme='blue' onClick={play}>Play</Button>
-          <Button colorScheme='orange' onClick={pause}>Pause</Button>
-          <Button colorScheme='red' onClick={stop}>Stop</Button>
+        <ButtonGroup variant='outline' spacing='5' m={2}>
+          <Button onClick={play}><Icon as={FaPlay} /></Button>
+          <Button onClick={pause}><Icon as={FaPause} /></Button>
+          <Button onClick={stop}><Icon as={FaStop} /></Button>
         </ButtonGroup>
       </Center>
       <div ref={divRef} />

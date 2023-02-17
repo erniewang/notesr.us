@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { FileUpload } from '../components/FileUpload.jsx';
 
-export const Pitch2Notes = () => {
+const Pitch2Notes = () => {
 
   useEffect( () => {
   }, []);
@@ -20,3 +20,4 @@ export const Pitch2Notes = () => {
   )
 };
 
+export default Pitch2Notes;

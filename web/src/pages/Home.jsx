@@ -3,37 +3,51 @@ import {
   Container,
   Heading,
   SimpleGrid,
-  Icon,
   Text,
   Stack,
   HStack,
   VStack,
 } from '@chakra-ui/react';
-import { CheckIcon } from '@chakra-ui/icons';
 
 
 const features = [
   {
+    icon: '🎵',
     title: 'Note Display (MusicXML)',
     text: 'Upload your MusicXML file, display notes and play your music in the browser.',
   },
   {
+    icon: '🎹',
     title: 'Note Display (ABC)',
     text: 'Paste a text of ABC notation, display your music notes and play music.',
   },
   {
+    icon: '🎻',
     title: 'Note Editor',
     text: 'Edit your music score, play it and download it.',
   },
   {
+    icon: '🎷',
     title: 'Chord Generator',
     text: 'Generate all kinds of chords.',
   },
   {
-    title: 'Note Listener',
-    text: 'Play, sing; NoteListener will put your music into notes and let you download your score.',
+    icon: '🎧',
+    title: 'Note Taker',
+    text: 'Upload your music (WAV, MP3) and turn it into notes.',
   },
   {
+    icon: '🎤',
+    title: 'Note Listener',
+    text: 'Play, sing to your mic and turn your voice/sound into notes and let you download your score.',
+  },
+  {
+    icon: '🥁',
+    title: 'Beat Maker',
+    text: 'Use your voice to generate drum, bass beats and turn them into backing tracks',
+  },
+  {
+    icon: '👂',
     title: 'Ear Trainer',
     text: 'Develop your music intuition',
   },
@@ -53,9 +67,7 @@ export const Home = () => {
         <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={10}>
           {features.map((feature, idx) => (
             <HStack key={idx} align={'top'}>
-              <Box color={'green.400'} px={2}>
-                <Icon as={CheckIcon} />
-              </Box>
+              <Text fontSize='xl'>{feature.icon}</Text>
               <VStack align={'start'}>
                 <Text fontWeight={600}>{feature.title}</Text>
                 <Text color={'gray.600'}>{feature.text}</Text>

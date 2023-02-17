@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import { MarkGithubIcon } from '@primer/octicons-react';
+import { FaGithub } from 'react-icons/fa'
 
-import Footer from '../components/Footer';
+//import Footer from '../components/Footer';
 
 import {
   Box,
@@ -78,7 +78,7 @@ export default function Root() {
           direction={'row'}
           spacing={6}>
           <Link py={2} href={'https://github.com/erniewang/notesr.us'}>
-            <MarkGithubIcon size={16} />
+            <Icon as={FaGithub} />
           </Link>
         </Stack>
       </Flex>
@@ -265,7 +265,11 @@ const NAV_ITEMS = [
     href: '/chordgen',
   },
   {
-    label: 'Note Listener',
+    label: 'Note Taker',
     href: '/pitch2notes',
+  },
+  {
+    label: 'Note Listener',
+    href: '/listener',
   },
 ];

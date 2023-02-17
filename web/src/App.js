@@ -4,7 +4,8 @@ import { Home } from './pages/Home';
 import { NoteEditor } from './pages/NoteEditor';
 import ErrorPage from './pages/ErrorPage';
 import ChordGenerator from './pages/ChordGenerator';
-import { Pitch2Notes } from './pages/Pitch2Notes';
+import Pitch2Notes from './pages/Pitch2Notes';
+import NoteListener from './pages/NoteListener';
 import MusicXml from './pages/MusicXml';
 import './App.css';
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/musicxml",
         element: <MusicXml />,
+      },
+      {
+        path: "/listener",
+        element: <NoteListener />,
       },
     ],
   },

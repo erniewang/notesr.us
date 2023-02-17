@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
-import { UploadIcon } from '@primer/octicons-react';
+import { Icon, Text } from '@chakra-ui/react';
+import { FaCloudUploadAlt } from 'react-icons/fa';
 import './file_upload.css';
 
 export const FileUpload = (props) => {
@@ -67,10 +68,9 @@ export const FileUpload = (props) => {
       />
       <label id="label-file-upload" htmlFor="input-file-upload" className={dragActive ? "drag-active" : "" }>
         <div>
-          <p>{ msg }</p>
+          <p>{ msg } or click ↓</p>
           <button className="upload-button" onClick={onButtonClick}>
-	    <UploadIcon />
-	    Or click to upload
+	    <Icon boxSize='1.5em' as={FaCloudUploadAlt} />
 	  </button>
         </div> 
       </label>
