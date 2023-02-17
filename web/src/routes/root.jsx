@@ -77,6 +77,7 @@ export default function Root() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
+	  {/*<Link href='#' fontSize='sm' fontWeight={500}>About</Link>*/}
           <Link py={2} href={'https://github.com/erniewang/notesr.us'}>
             <Icon as={FaGithub} />
           </Link>
