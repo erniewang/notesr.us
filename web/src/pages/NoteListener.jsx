@@ -2,12 +2,24 @@ import { useEffect, useState } from 'react';
 import { Button, Center, Icon, Text } from '@chakra-ui/react';
 import { FaMicrophone, FaSpinner } from 'react-icons/fa';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
+import AbcEditor from '../components/AbcEditor';
 
 
 const NoteListener = () => {
   const [recording, setRecording] = useState(false);
-  const [waitingForBackend, setWaitingforBackend] = useState(false);
+  const [gotAbcBack, setGotAbcBack] = useState(false);
+  const [abctxt, setAbctxt] = useState('');
   const recorderControls = useAudioRecorder();
+
+  const onGotAbcBack = (data) => {
+    console.log(data);
+    if(data.abc){
+      fetch(`/api/files/{data.abc}`)
+        .then((res) => res.json())
+        .then((d) => { console.log(d); })
+        .then((err) => console.log(err));
+    }
+  };
 
   const postAudioBlob = (blob) => {
     let form = new FormData();
@@ -16,12 +28,12 @@ const NoteListener = () => {
     form.append('file', blob, 'mic.webm');
     fetch('/api/upload', { method: 'POST', body: form})
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => onGotAbcBack(data))
       .then((err) => console.log(err));
   };
 
   useEffect( () => {
-  }, []);
+  }, [abctxt]);
 
   const onStartStopRecording = () => {
     if(!recording){
@@ -58,9 +70,10 @@ const NoteListener = () => {
         </Button>
 	</Center>
 
-        <div>
+        <Center>
 	  { recording && <FaSpinner icon="spinner" className="fa_spinner" /> }
-        </div>
+	  { onGotAbcBack && <AbcEditor abctxt={abctxt} /> }
+        </Center>
       </div>
     </>
   )
