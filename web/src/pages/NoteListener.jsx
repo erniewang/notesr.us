@@ -11,12 +11,16 @@ const NoteListener = () => {
   const [abctxt, setAbctxt] = useState('');
   const recorderControls = useAudioRecorder();
 
+  const showAbc = (text) => {
+    setAbctxt(text);
+    setGotAbcBack(true);
+  };
+
   const onGotAbcBack = (data) => {
-    console.log(data);
     if(data.abc){
-      fetch(`/api/files/{data.abc}`)
-        .then((res) => res.json())
-        .then((d) => { console.log(d); })
+      fetch(`/api/files/${data.abc}`)
+        .then((res) => res.text())
+        .then((text) => showAbc(text))
         .then((err) => console.log(err));
     }
   };
@@ -36,6 +40,7 @@ const NoteListener = () => {
   }, [abctxt]);
 
   const onStartStopRecording = () => {
+    setGotAbcBack(false);
     if(!recording){
       recorderControls.startRecording();
       setRecording(true);
@@ -54,10 +59,12 @@ const NoteListener = () => {
             recorderControls={recorderControls}
           />
         </div>
+	<Center>
 	<Text>
           Click microphone to start recording, click again to stop. 
           Your notes will appear below the microphone.
 	</Text>
+	</Center>
 	<Center>
 	<Button
 	  m={2}
@@ -72,7 +79,7 @@ const NoteListener = () => {
 
         <Center>
 	  { recording && <FaSpinner icon="spinner" className="fa_spinner" /> }
-	  { onGotAbcBack && <AbcEditor abctxt={abctxt} /> }
+	  { gotAbcBack && <AbcEditor abctxt={abctxt} /> }
         </Center>
       </div>
     </>

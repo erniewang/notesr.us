@@ -1,21 +1,30 @@
 import { useRef, useState } from 'react'
-import { Icon, Text } from '@chakra-ui/react';
+import { Icon } from '@chakra-ui/react';
 import { FaCloudUploadAlt } from 'react-icons/fa';
 import './file_upload.css';
 
+// caller must set these props: msg, setLoading, setUploadResult 
 export const FileUpload = (props) => {
   const { accept, msg } = props;
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef(null);
 
+  const onDataBack = (data) => {
+    console.log('#'.repeat(20) + 'in FileUpload ' + '#'.repeat(20));
+    if(data){
+      props.setUploadResult(data);
+    }
+  };
+
   function handleFile(files) {
+    props.setLoading(true);
     let data = new FormData();
     const file = files[0];
     data.append('file', file, file.name);
     //  dont provide headers such as 'Content-Type', otherwise fastapi will have 422 Unprocessable Entity
     fetch('/api/upload', { method: 'POST', body: data })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => onDataBack(data))
       .catch((err) => console.error(err));
   } 
   

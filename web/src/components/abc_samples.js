@@ -1,4 +1,4 @@
-export default {
+const abcSamples = {
 'Cooley':`X:1
 T: Cooley's
 M: 4/4
@@ -395,3 +395,4 @@ _B4 | =B2A>d- | d4 | ^d2^c>^f- |
 f4 | g2=f>_b- | b4 | ^f>f-f2 :|
 `
 }
+export default abcSamples;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, ButtonGroup, Text } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import AbcEditor from '../components/AbcEditor';
 import abcs from '../components/abc_samples';
 

@@ -13,13 +13,16 @@ export const OsmdScore = ({file}) => {
     if(!file){
       return;
     }
+    divRef.current.innerHTML = '';
+    console.log('#'.repeat(20) + ' OsmdScore ' + '#'.repeat(20));
+    console.log(file);
     (async () => {
       const osmd = new OpenSheetMusicDisplay(divRef.current);
       await osmd.load(file);
       await osmd.render();
       await window.audioPlayer.loadScore(osmd);
     })();
-  },[file, divRef]);
+  },[file]);
 
   const play = () => { 
     window.audioPlayer.play(); 
